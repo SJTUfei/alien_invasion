@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from slime import Slime
 
 class AlienInvasion:
     def __init__(self):
@@ -13,6 +14,7 @@ class AlienInvasion:
         )
         pygame.display.set_caption("Alien Invasion")
         self.ship = Ship(self)
+        self.slime = Slime(self)
 
     def run_game(self):
         while True:
@@ -28,6 +30,7 @@ class AlienInvasion:
     def _update_screen(self):
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        self.slime.blitme()
         pygame.display.flip()
 
 if __name__ == '__main__':
