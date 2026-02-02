@@ -6,6 +6,7 @@ from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from button import Button
 
 class AlienInvasion:
     def __init__(self):
@@ -23,7 +24,9 @@ class AlienInvasion:
 
         self._create_fleet()
 
-        self.game_active = True
+        self.game_active = False
+
+        self.button = Button(self,"Play")
 
     def run_game(self):
         while True:
@@ -151,6 +154,8 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        if not self.game_active:
+            self.button.draw_button()
         pygame.display.flip()
 
 if __name__ == '__main__':
